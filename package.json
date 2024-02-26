@@ -8,10 +8,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx lerna run dev --parallel",
     "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.0.11",
-    "lerna": "^8.1.2"
+    "lerna": "^4.0.0"
   }
 }
