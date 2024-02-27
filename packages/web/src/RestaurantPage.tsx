@@ -3,6 +3,7 @@ import RestaurantContainer from './components/containers/RestaurantContainer';
 import useRestaurantQuery from './services/queries/restaurant.query'; // Update with your actual file path
 import { useEffect, useState } from 'react';
 import CustomNavbar from './components/navbar/CustomNavbar';
+import ItemModal from './components/modals/ItemModal';
 
 const RestaurantPage = () => {
     const { id = '' } = useParams<{ id?: string }>();
@@ -34,6 +35,7 @@ const RestaurantPage = () => {
     return (
         <>
             <CustomNavbar />
+            <ItemModal />
             <RestaurantContainer
                 itemData={data}
                 name={currentRestaurant.name}
