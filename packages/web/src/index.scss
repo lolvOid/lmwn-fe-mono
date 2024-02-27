@@ -1,0 +1,11 @@
+@import "./assets/scss/variables.scss";
+
+
+:root {
+  font-family: $primary-font;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+}
