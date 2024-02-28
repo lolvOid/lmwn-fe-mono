@@ -1,10 +1,10 @@
 import RestaurantCardHeader from '@/components/restaurant-card/RestaurantCardHeader';
 import ItemCardLayout from '../layouts/ItemCardLayout';
 import ItemCard from '../card/ItemCard';
-import useRestaurantQuery from '@/services/queries/restaurant.query';
-import { Fragment, Key, useEffect } from 'react';
-import useShortMenuQuery from '@/services/queries/menu.query';
+import { Fragment, Key } from 'react';
 import { Menu } from '@/types/menu';
+import useModalStore from '@/store/modal/modalStore';
+import { getKey } from '@/utilts/generateId';
 
 type RestaurantContainerProps = {
     itemData: any;
@@ -21,8 +21,17 @@ const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
     closeTime,
     restaurantImage,
 }: RestaurantContainerProps) => {
+    const { showModal, setModalData } = useModalStore();
+    const handleShowItem = (name: string, restaurantId: any) => {
+        showModal();
+        setModalData({
+            menuName: name,
+            restaurantId: restaurantId,
+        });
+    };
+
     return (
-        <main className="w-full  max-h-screen relative">
+        <main className="w-full max-h-screen relative overflow-y-visible">
             <div className="mx-auto my-0 relative">
                 <div className="flex sticky top-16">
                     <div className="w-full mx-auto my-0">
@@ -34,20 +43,23 @@ const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
                 </div>
                 <RestaurantCardHeader name={name} closeTime={closeTime} openTime={openTime} />
                 <ItemCardLayout>
-                    {itemData?.pages.map((page: { menus: Menu[] }, i: Key | null | undefined) => {
+                    {itemData?.pages.map((page: { id: string; menus: Menu[] }) => {
                         return (
-                            <Fragment key={i}>
+                            <Fragment key={getKey()}>
                                 {page.menus.map((item: Menu, index: number) => {
                                     return (
                                         <ItemCard
-                                            id={item.id}
-                                            dataKey={item.id}
+                                            key={index}
                                             imageSource={item.thumbnailImage ?? ''}
                                             name={item.name}
                                             fullPrice={item.fullPrice.toString()}
                                             discountedPercent={Number(
                                                 item.discountedPercent,
                                             ).toFixed(0)}
+                                            totalInStock={0}
+                                            onClick={() =>
+                                                handleShowItem(item.name, page?.id || '')
+                                            }
                                         />
                                     );
                                 })}

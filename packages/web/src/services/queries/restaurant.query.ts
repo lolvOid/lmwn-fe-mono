@@ -17,7 +17,7 @@ const useRestaurantQuery = (restaurantId: string) => {
             }
             return undefined;
         },
-        initialPageParam: 1, // Add initialPageParam property with initial value
+        initialPageParam: 1,
     });
 };
 

@@ -4,9 +4,13 @@ import useRestaurantQuery from './services/queries/restaurant.query'; // Update 
 import { useEffect, useState } from 'react';
 import CustomNavbar from './components/navbar/CustomNavbar';
 import ItemModal from './components/modals/ItemModal';
+import useModalStore from './store/modal/modalStore';
+import RestaurantLoadingContainer from './components/loading/Loading';
+import Loading from './components/loading/Loading';
 
 const RestaurantPage = () => {
     const { id = '' } = useParams<{ id?: string }>();
+    const { show: showModal } = useModalStore();
     const [scrolled, setScrolled] = useState(false);
     const { data, error, isFetchingNextPage, isLoading, fetchNextPage } = useRestaurantQuery(id);
     const handleScroll = () => {
@@ -28,21 +32,21 @@ const RestaurantPage = () => {
         if (data) document.title = currentRestaurant.name;
     }, [data]);
 
-    if (isLoading) return <div>Loading...</div>;
-
-    if (error) return <div>Error....</div>;
-
     return (
         <>
             <CustomNavbar />
-            <ItemModal />
-            <RestaurantContainer
-                itemData={data}
-                name={currentRestaurant.name}
-                openTime={currentRestaurant.activeTimePeriod.open}
-                closeTime={currentRestaurant.activeTimePeriod.close}
-                restaurantImage={currentRestaurant.coverImage}
-            />
+            {!isLoading && !error && (
+                <>
+                    {showModal && <ItemModal restaurantId={id} />}
+                    <RestaurantContainer
+                        itemData={data}
+                        name={currentRestaurant.name}
+                        openTime={currentRestaurant.activeTimePeriod.open}
+                        closeTime={currentRestaurant.activeTimePeriod.close}
+                        restaurantImage={currentRestaurant.coverImage}
+                    />
+                </>
+            )}
         </>
     );
 };

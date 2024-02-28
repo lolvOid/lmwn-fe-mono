@@ -57,6 +57,7 @@ export const getMenuByName = async (req: Request, res: Response) => {
   const { type } = req.query;
   const menuTypes = ['short', 'full'];
   const menuType = typeof type === 'string' && menuTypes.includes(type) ? type : 'short';
+  console.log(type)
   try {
     const menu = await axios.get(`${API_BASE_URL}/api/restaurants/${restaurantId}/menus/${menuName}/${menuType}.json`);
     return res.status(200).send(menu.data);

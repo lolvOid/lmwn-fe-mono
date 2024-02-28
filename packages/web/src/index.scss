@@ -1,4 +1,4 @@
-@import "./assets/scss/variables.scss";
+@import "./assets/scss/app.scss";
 
 
 :root {
@@ -8,4 +8,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
+  overflow:hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
 }
