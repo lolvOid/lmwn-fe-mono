@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx lerna run dev --parallel",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:api": "cd packages/api-gateway && yarn test"
   },
   "devDependencies": {
     "husky": "^9.0.11",
