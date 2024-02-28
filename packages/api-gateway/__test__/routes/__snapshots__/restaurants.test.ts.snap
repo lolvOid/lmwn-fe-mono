@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Restaurants and Menu routes Should return full menu data 1`] = `
+{
+  "discountedPercent": 0,
+  "fullPrice": 170,
+  "id": "Peach and Blueberry Crumble Cheesecake",
+  "largeImage": "https://img.wongnai.com/p/1920x0/2020/10/14/f6d01bd40cb244b1a86570e4db315c76.jpg",
+  "name": "Peach and Blueberry Crumble Cheesecake",
+  "options": [
+    {
+      "choices": [
+        {
+          "label": "Take Away ใส่กล่อง",
+        },
+        {
+          "label": "After Food รับหลังอาหาร",
+        },
+      ],
+      "label": "Cake",
+    },
+  ],
+  "sold": 100,
+  "thumbnailImage": "https://img.wongnai.com/p/100x100/2020/10/14/f6d01bd40cb244b1a86570e4db315c76.jpg",
+  "totalInStock": 100,
+}
+`;
+
+exports[`Test Restaurants and Menu routes Should return short menu data 1`] = `
+{
+  "discountedPercent": 0,
+  "fullPrice": 170,
+  "id": "Peach and Blueberry Crumble Cheesecake",
+  "name": "Peach and Blueberry Crumble Cheesecake",
+  "sold": 100,
+  "thumbnailImage": "https://img.wongnai.com/p/100x100/2020/10/14/f6d01bd40cb244b1a86570e4db315c76.jpg",
+  "totalInStock": 100,
+}
+`;
+
+exports[`Test Restaurants and Menu routes Should return the specific restaurant 1`] = `
+{
+  "activeTimePeriod": {
+    "close": "17:00",
+    "open": "08:00",
+  },
+  "coverImage": "https://img.wongnai.com/p/1920x0/2021/03/09/fc6f2b50e313418590eb113cbc4981c2.jpg",
+  "id": "227018",
+  "menus": [],
+  "name": "Ekkamai Macchiato - Home Brewer",
+}
+`;

@@ -1,3 +1,3 @@
-import config from 'config';
+// import config from 'config';
 
-export const API_BASE_URL = <string>config.get("LMWN_API_SERVICE_URL");
+export const API_BASE_URL = "https://us-central1-wongnai-frontend-assignment.cloudfunctions.net";
