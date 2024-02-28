@@ -1,24 +1,29 @@
 {
-	"compilerOptions": {
-		"target": "es6",
-		"module": "commonjs",
-		"outDir": "dist",
-		"rootDir": "./src",
-		/* Strict Type-Checking Options */
-		"strict": true,
-		"strictPropertyInitialization": false,
-        "noImplicitAny": true,
-		 /* Module Resolution Options */
-		"moduleResolution": "node",
-		"baseUrl": "./src",
-        "esModuleInterop": true,
-		/* Advanced Options */
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-		"paths": {
-			"#root/*": ["./src/*"]
-		},
-	},
-    "include": ["src/**/*", "../web/src/types"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": "./src",
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": true,
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    /* Advanced Options */
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "#root/*": ["./src/*"]
+    },
+    "types": ["node", "jest"],
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true
+  },
+  "include": ["src/**/*", "src/types"],
+  "exclude": ["node_modules,/coverage", "./dist", "__tests__", "jest.config.js"]
 }
