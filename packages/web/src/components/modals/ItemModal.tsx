@@ -71,30 +71,31 @@ const ItemModal = (props: any) => {
                     <div className="w-full h-full flex justify-center items-end lg:items-center">
                         <div className="relative rounded-t-2xl lg:rounded-lg shadow-md shadow-gray-400 flex flex-col z-[2000] lg:w-[600px] h-[80vh] lg:max-h-[1024px] w-full item-modal-content overflow-y-auto max-w-screen-2xl max-h-svh bg-white">
                             <div className="w-full rounded-t-2xl lg:rounded-t-lg">
-                                {
-                                    !itemData?.largeImage || isLoading &&   <div
-                                    role="status"
-                                    className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
-                                >
-                                    <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
-                                        <svg
-                                            className="w-10 h-10 text-gray-200 dark:text-gray-600"
-                                            aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="currentColor"
-                                            viewBox="0 0 20 18"
+                                {!itemData?.largeImage &&
+                                    (
+                                        <div
+                                            role="status"
+                                            className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
                                         >
-                                            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                }
-                                <img
-                                    src={
-                                        itemData?.largeImage
-                                    }
-                                    className="object-cover w-full h-[250px] rounded-t-2xl lg:rounded-t-lg"
-                                />
+                                            <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded-t-2xl lg:rounded-t-lg">
+                                                <svg
+                                                    className="w-full h-[250px] text-gray-200"
+                                                    aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 20 18"
+                                                >
+                                                    <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    )}
+                                {itemData?.largeImage && (
+                                    <img
+                                        src={itemData?.largeImage}
+                                        className="object-cover w-full h-[250px] rounded-t-2xl lg:rounded-t-lg"
+                                    />
+                                )}
                             </div>
                             <button
                                 className="w-auto h-auto p-4 absolute top-1 right-1 hover:bg-white hover:bg-opacity-50 rounded-full"
