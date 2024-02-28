@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Default Route Should return the default response 1`] = `"LINE MAN Wongnai Frontend Assignment"`;
