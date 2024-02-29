@@ -80,9 +80,6 @@
         ],
         "*.{json,md,html,js,jsx,ts,tsx}": [
             "prettier --write"
-        ],
-        "unit test": [
-            "jest --testTimeout=10000"
         ]
     }
 }
