@@ -1,7 +1,7 @@
-import './App.css';
+import '@/App.css';
 import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
-import RestaurantPage from './RestaurantPage';
-import ErrorPage from './pages/ErrorPage';
+import RestaurantPage from '@/pages/RestaurantPage';
+import ErrorPage from '@/pages/ErrorPage';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {

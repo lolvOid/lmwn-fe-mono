@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { baseAPIURL } from '../constants';
+import { baseAPIURL } from '@/services/constants';
 
 const useRestaurantQuery = (restaurantId: string) => {
     return useInfiniteQuery({

@@ -1,23 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import RestaurantContainer from './components/containers/RestaurantContainer';
-import useRestaurantQuery from './services/queries/restaurant.query';
-import useModalStore from './store/modal/modalStore';
-import CustomNavbar from './components/navbar/CustomNavbar';
-import ItemModal from './components/modals/ItemModal';
+import RestaurantContainer from '@/components/containers/RestaurantContainer';
+import useRestaurantQuery from '@/services/queries/restaurant.query';
+import useModalStore from '@/store/modal/modalStore';
+import CustomNavbar from '@/components/navbar/CustomNavbar';
+import ItemModal from '@/components/modals/ItemModal';
 
 const RestaurantPage = () => {
-    const { id = '' } = useParams<{ id?: string }>();
+    const params = useParams<any>();
+    const id = params?.id || '';
     const { show: showModal } = useModalStore();
     const [scrolled, setScrolled] = useState(false);
 
-    const {
-        data,
-        error,
-        isFetchingNextPage,
-        isLoading,
-        fetchNextPage,
-    } = useRestaurantQuery(id);
+    const { data, error, isFetchingNextPage, isLoading, fetchNextPage } = useRestaurantQuery(id);
 
     const handleScroll = () => {
         const offset = window.scrollY;

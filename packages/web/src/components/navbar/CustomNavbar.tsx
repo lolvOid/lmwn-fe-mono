@@ -1,6 +1,6 @@
 import { GrCart } from 'react-icons/gr';
 import useCartStore from '@/store/cart/cartStore';
-import SideCart from '../cart/SideCart';
+import SideCart from '@/components/cart/SideCart';
 
 const CustomNavbar = () => {
     const { totalCartCount, isCartDisplayed, showCart, hideCart } = useCartStore();

@@ -1,7 +1,7 @@
 import RestaurantCardHeader from '@/components/restaurant-card/RestaurantCardHeader';
-import ItemCardLayout from '../layouts/ItemCardLayout';
-import ItemCard from '../card/ItemCard';
-import { Fragment, Key } from 'react';
+import ItemCardLayout from '@/components/layouts/ItemCardLayout';
+import ItemCard from '@/components/card/ItemCard';
+import { Fragment } from 'react';
 import { Menu } from '@/types/menu';
 import useModalStore from '@/store/modal/modalStore';
 import { getKey } from '@/utilts/generateId';

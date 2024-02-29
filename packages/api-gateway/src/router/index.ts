@@ -1,5 +1,5 @@
 import express, {Request, Response} from 'express';
-import * as restaurantController from '../controllers/RestaurantController';
+import * as restaurantController from '@/controllers/RestaurantController';
 
 const router = express.Router();
 

@@ -19,7 +19,9 @@ const CartItem = ({ itemData, onRemove }: CartItemProps) => {
                         className="w-16 h-16 object-cover object-center flex-shrink-0"
                     />
                     <span className="primary-text text-xl ml-3">{itemData.name}</span>
-                    <span className="text-md ml-3">{getThaiBaht(itemData.fullPrice * itemData.count)}</span>
+                    <span className="text-md ml-3">
+                        {getThaiBaht(itemData.fullPrice * itemData.count)}
+                    </span>
                 </div>
                 {itemData.options.length > 0 && (
                     <>

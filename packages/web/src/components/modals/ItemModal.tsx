@@ -1,14 +1,13 @@
-import { useEffect, useState, Fragment, SyntheticEvent, BaseSyntheticEvent } from 'react';
+import { useEffect, useState, Fragment, BaseSyntheticEvent } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
-import './ItemModal.scss';
 import useModalStore from '@/store/modal/modalStore';
 import useFullMenuItemQuery from '@/services/queries/menu.query';
 import { FullMenu } from '@/types/menu';
 import { getThaiBaht } from '@/utilts/formatCurrency';
 import { getDiscountedPrice } from '@/utilts/helper';
 import useCartStore, { CartDataType } from '@/store/cart/cartStore';
-import Loading from '../loading/Loading';
+import styles from '@/components/modals/ItemModal.module.scss';
 
 const ItemModal = (props: any) => {
     const { show: showModal, modalData, hideModal, resetModalData } = useModalStore();
@@ -29,11 +28,11 @@ const ItemModal = (props: any) => {
         calculateTotalCartPrice();
         calculateTotalCartCount();
     };
-    const handleIncreaseCartCount = (id: string) => {
+    const handleIncreaseCartCount = () => {
         setCartCount(cartCount + 1);
     };
 
-    const handleReduceCartCount = (id: string) => {
+    const handleReduceCartCount = () => {
         if (cartCount <= 1) {
             setCartCount(1);
         } else {
@@ -67,29 +66,28 @@ const ItemModal = (props: any) => {
     return (
         <>
             {showModal && itemData && Object.keys(itemData).length && (
-                <div className="fixed top-0 left-0 w-screen h-screen z-[1000]  bg-opacity-60 bg-black item-modal">
+                <div className={`fixed top-0 left-0 w-screen h-screen z-[1000]  bg-opacity-60 bg-black ${styles.itemModal}`}>
                     <div className="w-full h-full flex justify-center items-end lg:items-center">
-                        <div className="relative rounded-t-2xl lg:rounded-lg shadow-md shadow-gray-400 flex flex-col z-[2000] lg:w-[600px] h-[80vh] lg:max-h-[1024px] w-full item-modal-content overflow-y-auto max-w-screen-2xl max-h-svh bg-white">
+                        <div className={`relative rounded-t-2xl lg:rounded-lg shadow-md shadow-gray-400 flex flex-col z-[2000] lg:w-[600px] h-[80vh] lg:max-h-[1024px] w-full overflow-y-auto max-w-screen-2xl max-h-svh bg-white ${styles.itemModalContent}`}>
                             <div className="w-full rounded-t-2xl lg:rounded-t-lg">
-                                {!itemData?.largeImage &&
-                                    (
-                                        <div
-                                            role="status"
-                                            className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
-                                        >
-                                            <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded-t-2xl lg:rounded-t-lg">
-                                                <svg
-                                                    className="w-full h-[250px] text-gray-200"
-                                                    aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor"
-                                                    viewBox="0 0 20 18"
-                                                >
-                                                    <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-                                                </svg>
-                                            </div>
+                                {!itemData?.largeImage && (
+                                    <div
+                                        role="status"
+                                        className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center"
+                                    >
+                                        <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded-t-2xl lg:rounded-t-lg">
+                                            <svg
+                                                className="w-full h-[250px] text-gray-200"
+                                                aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 18"
+                                            >
+                                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
+                                            </svg>
                                         </div>
-                                    )}
+                                    </div>
+                                )}
                                 {itemData?.largeImage && (
                                     <img
                                         src={itemData?.largeImage}
@@ -168,7 +166,7 @@ const ItemModal = (props: any) => {
                                 <div className="flex">
                                     <button
                                         className="primary-bg text-sm w-8 h-8 inline-flex items-center justify-center text-white rounded-l-md hover:bg-yellow-500"
-                                        onClick={() => handleReduceCartCount(itemData.id)}
+                                        onClick={() => handleReduceCartCount()}
                                     >
                                         <FaMinus />
                                     </button>
@@ -177,7 +175,7 @@ const ItemModal = (props: any) => {
                                     </span>
                                     <button
                                         className="primary-bg text-sm w-8 h-8 inline-flex items-center justify-center text-white rounded-r-md rounded-l-none rounded-md hover:bg-yellow-500"
-                                        onClick={() => handleIncreaseCartCount(itemData.id)}
+                                        onClick={() => handleIncreaseCartCount()}
                                     >
                                         <FaPlus />
                                     </button>

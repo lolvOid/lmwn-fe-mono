@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
-import { API_BASE_URL } from '../common/constants';
+import { API_BASE_URL } from '@/common/constants';
 import { Request, Response } from 'express';
-import { MenuCache, RestaurantCache } from '../services/CacheService'; 
+import { MenuCache, RestaurantCache } from '@/services/CacheService';
 
 const api: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -21,14 +21,12 @@ const cacheKey = (restaurantId: string, item?: number, menuName?: string) => {
 const fetchMenuItems = async (restaurantId: string, items: number): Promise<any[]> => {
   try {
     const response = await api.get(`/api/restaurants/${restaurantId}.json`);
-    const menuPromises = response.data.menus
-      .slice((items - 1) * 10, (items - 1) * 10 + 10)
-      .map((menu: any) =>
-        api
-          .get(`/api/restaurants/${restaurantId}/menus/${menu}/short.json`)
-          .then((response) => response.data)
-          .catch((error) => Promise.reject(error)),
-      );
+    const menuPromises = response.data.menus.slice((items - 1) * 10, (items - 1) * 10 + 10).map((menu: any) =>
+      api
+        .get(`/api/restaurants/${restaurantId}/menus/${menu}/short.json`)
+        .then((response) => response.data)
+        .catch((error) => Promise.reject(error)),
+    );
 
     return Promise.all(menuPromises);
   } catch (error) {

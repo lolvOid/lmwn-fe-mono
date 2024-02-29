@@ -1,7 +1,6 @@
 import request from 'supertest';
 import app from '../src/app';
 
-
 describe('Test Default Route', () => {
   test('Should return the default response', async () => {
     const res = await request(app).get(`/`);

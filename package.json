@@ -7,10 +7,11 @@
     ]
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx lerna run dev --parallel",
     "prepare": "husky",
-    "test:api": "cd packages/api-gateway && yarn test"
+    "test:api": "cd packages/api-gateway && yarn test",
+    "test:web": "cd packages/api-gateway && yarn test",
+    "test": "yarn test:api && yarn test:web"
   },
   "devDependencies": {
     "husky": "^9.0.11",

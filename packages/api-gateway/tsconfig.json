@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "#root/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
     "types": ["node", "jest"],
   },
@@ -24,6 +24,6 @@
     "transpileOnly": true,
     "files": true
   },
-  "include": ["src/**/*", "src/types"],
-  "exclude": ["node_modules,/coverage", "./dist", "__tests__", "jest.config.js"]
+  "include": ["src/**/*", "src/types", "__test__"],
+  "exclude": ["node_modules,/coverage", "dist", "__test__", "jest.config.cjs"]
 }

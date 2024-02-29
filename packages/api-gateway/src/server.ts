@@ -1,7 +1,5 @@
-import config from 'config';
-import app from "app";
-
-const PORT = <number>config.get('PORT');
+import app from "@/app";
+import { PORT } from '@/common/constants';
 
 try {
   app.listen(PORT, (): void => {
