@@ -31,7 +31,7 @@ const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
                         <img
                             src={restaurantImage}
                             alt={name}
-                            className="object-cover w-full h-[180px] lg:h-96"
+                            className="object-cover w-full h-[180px] lg:h-[600px]"
                         />
                     </div>
                 </div>

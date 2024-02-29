@@ -34,7 +34,7 @@ const fetchMenuItems = async (restaurantId: string, items: number): Promise<any[
   }
 };
 
-const processMenuResult = (response: any, menuResult: any[], restaurantId: string): any => {
+const processMenuResult = (response: any, menuResult: any[]): any => {
   if (menuResult.length > 0) {
     const sortMenu = menuResult.sort((a: any, b: any) => b.sold - a.sold);
     if (RestaurantCache.has('popular')) {
@@ -67,7 +67,7 @@ export const getRestaurantById = async (req: Request, res: Response) => {
     if (menuResult.length < 10) RestaurantCache.set('all', true);
 
     const response = await api.get(`/api/restaurants/${restaurantId}.json`);
-    const data = processMenuResult(response, menuResult, restaurantId);
+    const data = processMenuResult(response, menuResult);
 
     RestaurantCache.set(cacheKeyValue, data);
     return res.status(200).json(data);
