@@ -12,13 +12,13 @@ export type ItemData = {
         menus: Menu[];
     }[];
 };
-type RestaurantContainerProps = {
+export interface RestaurantContainerProps {
     itemData: ItemData[];
     name: string;
     openTime: string;
     closeTime: string;
     restaurantImage: string;
-};
+}
 
 const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
     itemData,
@@ -28,7 +28,7 @@ const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
     restaurantImage,
 }: RestaurantContainerProps) => {
     const { showModal, setModalData } = useModalStore();
-    const handleShowItem = (name: string, restaurantId: number | string) => {
+    const handleShowItem = (name: string, restaurantId: string) => {
         showModal();
         setModalData({
             menuName: name,

@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
-import RestaurantContainer from '@/components/containers/RestaurantContainer';
+import RestaurantContainer, {
+    RestaurantContainerProps,
+} from '@/components/containers/RestaurantContainer';
 import useModalStore from '@/store/modal/modalStore';
 import renderer from 'react-test-renderer';
 import { ModalStore } from '@/types/modalTypes';
@@ -27,12 +29,12 @@ describe('RestaurantContainer', () => {
     };
 
     const mockProps = {
-        itemData: mockItemData,
+        itemData: mockItemData as unknown,
         name: 'Restaurant Name',
         openTime: '08:00 AM',
         closeTime: '10:00 PM',
         restaurantImage: 'restaurant-image.jpg',
-    };
+    } as RestaurantContainerProps;
 
     it('Should render properly with provided props', () => {
         const mockShowModal = jest.fn();
