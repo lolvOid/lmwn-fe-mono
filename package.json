@@ -10,11 +10,12 @@
     "dev": "npx lerna run dev --parallel",
     "prepare": "husky",
     "test:api": "cd packages/api-gateway && yarn test",
-    "test:web": "cd packages/api-gateway && yarn test",
+    "test:web": "cd packages/web && yarn test",
     "test": "yarn test:api && yarn test:web"
   },
   "devDependencies": {
     "husky": "^9.0.11",
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "lint-staged": "^15.2.2"
   }
 }

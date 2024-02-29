@@ -1,7 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { baseAPIURL } from "@/services/constants";
-
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { baseAPIURL } from '@/services/constants';
 
 /**
  * Custom React query hook for fetching the full menu of a restaurant.
@@ -11,16 +10,20 @@ import { baseAPIURL } from "@/services/constants";
  * @param {string} menuType - The type of the menu
  * @return {QueryResult} The result of the query
  */
-const useFullMenuItemQuery = (restaurantId: string, menuName: string, menuType?: string|'short') => {
-  return useQuery({
-    queryKey: ["fullMenu", menuName],
-    queryFn: async () => {
-      const { data } = await axios.get(
-        `${baseAPIURL}/restaurants/${restaurantId}/menu/${menuName}?type=${menuType}`
-      );
-      return data;
-    },
-  });
+const useFullMenuItemQuery = (
+    restaurantId: string,
+    menuName: string,
+    menuType?: string | 'short',
+) => {
+    return useQuery({
+        queryKey: ['fullMenu', menuName],
+        queryFn: async () => {
+            const { data } = await axios.get(
+                `${baseAPIURL}/restaurants/${restaurantId}/menu/${menuName}?type=${menuType}`,
+            );
+            return data;
+        },
+    });
 };
 
 export default useFullMenuItemQuery;

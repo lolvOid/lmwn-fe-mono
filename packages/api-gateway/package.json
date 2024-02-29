@@ -7,8 +7,9 @@
     "build": "tsc",
     "format": "prettier --config .prettierrc.js --write src/**/*.ts",
     "lint": "eslint . --ext ts",
-    "lint:all": "lint-staged",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --coverage --collectCoverageFrom='src/components/**/*.{ts,tsx"
+    "pre-commit": "lint-staged",
+    "test": "jest --testTimeout=10000",
+    "test:coverage": "jest --testTimeout=10000 --coverage"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import RestaurantContainer from '@/components/containers/RestaurantContainer';
+import RestaurantContainer, { ItemData } from '@/components/containers/RestaurantContainer';
 import useRestaurantQuery from '@/services/queries/restaurant.query';
 import useModalStore from '@/store/modal/modalStore';
 import CustomNavbar from '@/components/navbar/CustomNavbar';
 import ItemModal from '@/components/modals/ItemModal';
 
 const RestaurantPage = () => {
-    const params = useParams<any>();
+    const params = useParams();
     const id = params?.id || '';
     const { show: showModal } = useModalStore();
     const [scrolled, setScrolled] = useState(false);
@@ -39,12 +39,12 @@ const RestaurantPage = () => {
         if (scrolled && !isFetchingNextPage) {
             fetchNextPage();
         }
-    }, [scrolled, isFetchingNextPage]);
+    }, [scrolled, isFetchingNextPage, fetchNextPage]);
 
     useEffect(() => {
         fetchNextPage();
         if (data) document.title = currentRestaurant.name;
-    }, [data]);
+    }, [currentRestaurant.name, data, fetchNextPage]);
 
     return (
         <>
@@ -52,13 +52,15 @@ const RestaurantPage = () => {
             {!isLoading && !error && (
                 <>
                     {showModal && <ItemModal restaurantId={id} />}
-                    <RestaurantContainer
-                        itemData={data}
-                        name={currentRestaurant.name}
-                        openTime={currentRestaurant.activeTimePeriod.open}
-                        closeTime={currentRestaurant.activeTimePeriod.close}
-                        restaurantImage={currentRestaurant.coverImage}
-                    />
+                    {data && (
+                        <RestaurantContainer
+                            itemData={data as object as ItemData[]}
+                            name={currentRestaurant.name}
+                            openTime={currentRestaurant.activeTimePeriod.open}
+                            closeTime={currentRestaurant.activeTimePeriod.close}
+                            restaurantImage={currentRestaurant.coverImage}
+                        />
+                    )}
                 </>
             )}
         </>

@@ -6,10 +6,14 @@ import useFullMenuItemQuery from '@/services/queries/menu.query';
 import { FullMenu } from '@/types/menu';
 import { getThaiBaht } from '@/utilts/formatCurrency';
 import { getDiscountedPrice } from '@/utilts/helper';
-import useCartStore, { CartDataType } from '@/store/cart/cartStore';
+import useCartStore from '@/store/cart/cartStore';
 import styles from '@/components/modals/ItemModal.module.scss';
+import { CartDataType } from '@/types/cartTypes';
 
-const ItemModal = (props: any) => {
+interface ItemModalProps {
+    restaurantId: number | string;
+}
+const ItemModal = ({ restaurantId }: ItemModalProps) => {
     const { show: showModal, modalData, hideModal, resetModalData } = useModalStore();
     const [cartCount, setCartCount] = useState(1);
     const [selectedOptions, setOptions] = useState<string[]>([]);
@@ -20,7 +24,6 @@ const ItemModal = (props: any) => {
         modalData?.menuName || '',
         'full',
     );
-    const { restaurantId } = props;
     const [itemData, setItemData] = useState<FullMenu>();
     const handleAddToCart = (value: CartDataType) => {
         addToCart(value);
@@ -66,9 +69,13 @@ const ItemModal = (props: any) => {
     return (
         <>
             {showModal && itemData && Object.keys(itemData).length && (
-                <div className={`fixed top-0 left-0 w-screen h-screen z-[1000]  bg-opacity-60 bg-black ${styles.itemModal}`}>
+                <div
+                    className={`fixed top-0 left-0 w-screen h-screen z-[1000]  bg-opacity-60 bg-black ${styles.itemModal}`}
+                >
                     <div className="w-full h-full flex justify-center items-end lg:items-center">
-                        <div className={`relative rounded-t-2xl lg:rounded-lg shadow-md shadow-gray-400 flex flex-col z-[2000] lg:w-[600px] h-[80vh] lg:max-h-[1024px] w-full overflow-y-auto max-w-screen-2xl max-h-svh bg-white ${styles.itemModalContent}`}>
+                        <div
+                            className={`relative rounded-t-2xl lg:rounded-lg shadow-md shadow-gray-400 flex flex-col z-[2000] lg:w-[600px] h-[80vh] lg:max-h-[1024px] w-full overflow-y-auto max-w-screen-2xl max-h-svh bg-white ${styles.itemModalContent}`}
+                        >
                             <div className="w-full rounded-t-2xl lg:rounded-t-lg">
                                 {!itemData?.largeImage && (
                                     <div
@@ -92,10 +99,12 @@ const ItemModal = (props: any) => {
                                     <img
                                         src={itemData?.largeImage}
                                         className="object-cover w-full h-[250px] rounded-t-2xl lg:rounded-t-lg"
+                                        alt={itemData.name}
                                     />
                                 )}
                             </div>
                             <button
+                                data-testid="close-button"
                                 className="w-auto h-auto p-4 absolute top-1 right-1 hover:bg-white hover:bg-opacity-50 rounded-full"
                                 onClick={() => {
                                     hideModal();
@@ -106,7 +115,12 @@ const ItemModal = (props: any) => {
                             </button>
                             <div className="flex flex-col gap-2 flex-grow p-4 relative">
                                 <div className="border-b-2 h-fit py-4 items-end inline-flex z-10 bg-white w-full justify-between sticky top-0">
-                                    <span className="text-xl font-bold pr-4">{itemData.name}</span>
+                                    <span
+                                        className="text-xl font-bold pr-4"
+                                        data-testid="item-name"
+                                    >
+                                        {itemData.name}
+                                    </span>
                                     <span className="inline text-2xl font-light">
                                         <span>
                                             {itemData.discountedPercent
@@ -186,6 +200,7 @@ const ItemModal = (props: any) => {
                                             itemData.options.length > 0 &&
                                             selectedOptions.length === 0
                                         }
+                                        data-testid="add-to-cart-button"
                                         className="primary-bg text-md w-full h-10 inline-flex items-center disabled:bg-gray-300 justify-center text-white rounded-md hover:bg-yellow-500"
                                         onClick={() =>
                                             handleAddToCart({

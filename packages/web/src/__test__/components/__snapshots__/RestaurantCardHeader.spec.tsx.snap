@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RestaurantCardHeader Should render and match the default snapshot 1`] = `
+<div
+  className="bg-gray-900 rounded-t-2xl text-white lg:max-w-[600px] -my-3 lg:-my-4 mx-auto w-full px-8 lg:py-4 py-2 sticky z-[400] flex flex-col"
+>
+  <span
+    className="text-lg"
+  >
+    My Restaurant
+  </span>
+  <span
+    className="text-sm text-yellow-300 line"
+  >
+    Open 
+    7:00
+     - Close 
+    20:00
+  </span>
+</div>
+`;

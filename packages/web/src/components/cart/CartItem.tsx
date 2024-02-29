@@ -1,6 +1,6 @@
-import { CartDataType } from '@/store/cart/cartStore';
 import { getThaiBaht } from '@/utilts/formatCurrency';
 import { GrTrash } from 'react-icons/gr';
+import { CartDataType } from '../../types/cartTypes';
 
 interface CartItemProps {
     itemData: CartDataType;
@@ -17,6 +17,7 @@ const CartItem = ({ itemData, onRemove }: CartItemProps) => {
                             'https://dummyimage.com/128x128/dedede/5e5e5e.jpg&text=No+Image+Available'
                         }
                         className="w-16 h-16 object-cover object-center flex-shrink-0"
+                        alt={itemData.name || 'Item'}
                     />
                     <span className="primary-text text-xl ml-3">{itemData.name}</span>
                     <span className="text-md ml-3">

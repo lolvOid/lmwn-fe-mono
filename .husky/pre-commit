@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+case "$OS" in
+    Windows_NT)
+        cd packages/web && yarn.cmd run pre-commit &&
+        cd ../../packages/api-gateway && yarn.cmd run pre-commit
+    ;;
+    *)
+        cd packages/web && yarn run pre-commit &&
+        cd ../../packages/api-gateway && yarn run pre-commit
+    ;;
+esac

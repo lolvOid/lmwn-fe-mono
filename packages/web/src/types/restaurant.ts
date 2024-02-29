@@ -8,4 +8,3 @@ export interface Restaurant {
         close: string;
     };
 }
-
