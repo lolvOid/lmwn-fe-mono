@@ -4,7 +4,7 @@ exports[`ItemCard Should render and match the snapshot with mockProps 1`] = `
 <div
   className="relative flex lg:flex-row flex-col lg:justify-between border-solid border-gray-200 border-[0.4px] p-2 rounded-md opacity-100 cursor-pointer hover:bg-gray-100"
   data-testid="item-card"
-  onClick={[Function]}
+  onClick={[MockFunction]}
   onKeyDown={[Function]}
   role="button"
   tabIndex={0}
@@ -48,7 +48,7 @@ exports[`ItemCard Should render and match the snapshot with mockProps 1`] = `
     >
       <button
         className="primary-bg text-sm w-8 h-8 inline-flex items-center justify-center text-white rounded-full hover:bg-yellow-300 hover:animate-pulse"
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         <svg
           fill="currentColor"
@@ -76,7 +76,7 @@ exports[`ItemCard Should render and match the snapshot with mockProps 1`] = `
   >
     <button
       className="primary-bg text-sm w-8 h-8 inline-flex items-center justify-center text-white rounded-full hover:bg-yellow-300"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       <svg
         fill="currentColor"

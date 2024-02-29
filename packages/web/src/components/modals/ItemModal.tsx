@@ -3,18 +3,18 @@ import { FaMinus, FaPlus } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
 import useModalStore from '@/store/modal/modalStore';
 import useFullMenuItemQuery from '@/services/queries/menu.query';
-import { FullMenu } from '@/types/menu';
+import { FullMenu } from '@/interfaces/menu';
 import { getThaiBaht } from '@/utilts/formatCurrency';
 import { getDiscountedPrice } from '@/utilts/helper';
 import useCartStore from '@/store/cart/cartStore';
 import styles from '@/components/modals/ItemModal.module.scss';
-import { CartDataType } from '@/types/cartTypes';
-
+import { CartDataType } from '@/store/types/cartTypes';
 interface ItemModalProps {
     restaurantId: number | string;
 }
+
 const ItemModal = ({ restaurantId }: ItemModalProps) => {
-    const { show: showModal, modalData, hideModal, resetModalData } = useModalStore();
+    const { show, modalData, hideModal, resetModalData } = useModalStore();
     const [cartCount, setCartCount] = useState(1);
     const [selectedOptions, setOptions] = useState<string[]>([]);
     const { cartData, addToCart, calculateTotalCartPrice, calculateTotalCartCount } =
@@ -56,7 +56,7 @@ const ItemModal = ({ restaurantId }: ItemModalProps) => {
         }
     };
     useEffect(() => {
-        if (showModal) {
+        if (show) {
             if (isError) {
                 console.error('Error fetching menu data:', isError);
             }
@@ -65,10 +65,10 @@ const ItemModal = ({ restaurantId }: ItemModalProps) => {
                 setItemData(data);
             }
         }
-    }, [showModal, isLoading, isError, data, cartData]);
+    }, [show, isLoading, isError, data, cartData]);
     return (
         <>
-            {showModal && itemData && Object.keys(itemData).length && (
+            {show && itemData && Object.keys(itemData).length && (
                 <div
                     className={`fixed top-0 left-0 w-screen h-screen z-[1000]  bg-opacity-60 bg-black ${styles.itemModal}`}
                 >
@@ -152,7 +152,7 @@ const ItemModal = ({ restaurantId }: ItemModalProps) => {
                                                                 return (
                                                                     <div
                                                                         key={index}
-                                                                        className="inline-flex gap-2 items-center choices-checkbox"
+                                                                        className={`inline-flex gap-2 items-center ${styles.choicesCheckbox}`}
                                                                     >
                                                                         <input
                                                                             type="checkbox"

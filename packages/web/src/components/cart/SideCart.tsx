@@ -10,6 +10,7 @@ const SideCart = () => {
         hideCart,
         removeFromCartById,
         calculateTotalCartPrice,
+        calculateTotalCartCount,
     } = useCartStore();
     const handleOrder = () => {
         alert('Order Confirmed');
@@ -20,6 +21,7 @@ const SideCart = () => {
     const handleRemoveItem = (id: number | string) => {
         removeFromCartById(id);
         calculateTotalCartPrice();
+        calculateTotalCartCount();
     };
     return (
         <>

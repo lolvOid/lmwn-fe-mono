@@ -1,4 +1,4 @@
-import { CartDataType, CartStore } from '@/types/cartTypes';
+import { CartDataType, CartStore } from '@/store/types/cartTypes';
 import { create } from 'zustand';
 
 const useCartStore = create<CartStore>((set) => ({

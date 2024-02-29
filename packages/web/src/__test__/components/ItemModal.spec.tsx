@@ -53,6 +53,7 @@ describe('ItemModal', () => {
 
     it('Should render properly with provided modalData', async () => {
         render(<ItemModal restaurantId={227018} />);
+        await screen.findByTestId('item-name');
         expect(screen.getByTestId('item-name')).toHaveTextContent('Egg');
         fireEvent.click(screen.getByTestId('close-button'));
         expect(mockHideModal).toHaveBeenCalled();

@@ -26,7 +26,7 @@ describe('ItemCardLayout', () => {
         const container = screen.getByText('Div Component 1').closest('.flex');
 
         expect(layout).toHaveClass(
-            'h-[600px] overflow-y-auto max-w-[600px] py-8 bg-white lg:min-w-[200px] min-w-full mt-0 mx-auto my-0 z-50',
+            'relative flex justify-center items-start overflow-y-auto max-w-[600px] py-8 bg-white lg:min-w-[200px] min-w-full mt-0 mx-auto my-0 z-50 itemCardLayout',
         );
         expect(container).toHaveClass('flex justify-center items-start');
     });
