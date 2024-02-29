@@ -1,13 +1,14 @@
 import { getThaiBaht } from '@/utilts/formatCurrency';
 import { getDiscountedPrice } from '@/utilts/helper';
+import { SyntheticEvent } from 'react';
 import { FaPlus } from 'react-icons/fa';
 interface ItemCardProps {
     imageSource: string;
     name: string;
-    fullPrice: string | number;
-    discountedPercent: string;
+    fullPrice: number;
+    discountedPercent: number;
     totalInStock: number;
-    onClick?: () => void;
+    onClick?: (event: SyntheticEvent) => void;
 }
 
 const ItemCard = ({
@@ -23,11 +24,7 @@ const ItemCard = ({
             data-testid="item-card"
             role="button"
             className={`relative flex lg:flex-row flex-col lg:justify-between border-solid border-gray-200 border-[0.4px] p-2 rounded-md ${totalInStock != 0 || totalInStock != undefined ? 'opacity-100 cursor-pointer hover:bg-gray-100' : 'opacity-50 cursor-none'}`}
-            onClick={() => {
-                if (onClick && totalInStock != 0) {
-                    onClick();
-                }
-            }}
+            onClick={onClick}
             onKeyDown={() => {}}
             tabIndex={0}
         >
@@ -54,7 +51,7 @@ const ItemCard = ({
                             ? getThaiBaht(getDiscountedPrice(fullPrice, discountedPercent))
                             : getThaiBaht(fullPrice)}
                     </span>
-                    {parseFloat(discountedPercent) !== 0 && (
+                    {discountedPercent !== 0 && (
                         <span
                             className="text-xs text-wrap text-gray-600 line-through"
                             data-testid="item-card-price"
@@ -66,7 +63,7 @@ const ItemCard = ({
                 <div className="lg:flex hidden">
                     <button
                         className="primary-bg text-sm w-8 h-8 inline-flex items-center justify-center text-white rounded-full hover:bg-yellow-300 hover:animate-pulse"
-                        onClick={() => onClick && onClick()}
+                        onClick={onClick}
                     >
                         <FaPlus />
                     </button>
@@ -75,7 +72,7 @@ const ItemCard = ({
             <div className="flex lg:hidden absolute bottom-1 z-[200] right-1">
                 <button
                     className="primary-bg text-sm w-8 h-8 inline-flex items-center justify-center text-white rounded-full hover:bg-yellow-300"
-                    onClick={() => onClick && onClick()}
+                    onClick={onClick}
                 >
                     <FaPlus />
                 </button>

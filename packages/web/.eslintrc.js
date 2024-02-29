@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   root: true,
   env: { browser: true, es2021: true, 'jest/globals': true },
   extends: [
@@ -22,4 +22,12 @@ module.exports = {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'prettier/prettier': 'error',
   },
+  overrides: [
+    {
+      files: ['**/*.test.jsx', '**/*.test.tsx', '**/*.spec.jsx', '**/*.spec.tsx'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
 };

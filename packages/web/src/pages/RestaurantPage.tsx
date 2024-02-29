@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, SyntheticEvent } from 'react';
 import { useParams } from 'react-router-dom';
-import RestaurantContainer, { ItemData } from '@/components/containers/RestaurantContainer';
+import RestaurantContainer from '@/components/containers/RestaurantContainer';
 import useRestaurantQuery from '@/services/queries/restaurant.query';
 import useModalStore from '@/store/modal/modalStore';
 import CustomNavbar from '@/components/navbar/CustomNavbar';
 import ItemModal from '@/components/modals/ItemModal';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
+import { handleScroll } from '@/utilts/helper';
 
 const RestaurantPage = () => {
     const params = useParams();
@@ -14,25 +16,6 @@ const RestaurantPage = () => {
 
     const { data, error, isFetchingNextPage, isLoading, fetchNextPage } = useRestaurantQuery(id);
 
-    const handleScroll = () => {
-        const offset = window.scrollY;
-        const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-        if (offset > 322 && offset >= pageHeight * 0.9) {
-            setScrolled(true);
-        } else {
-            setScrolled(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     const currentRestaurant = data?.pages[0];
 
     useEffect(() => {
@@ -41,10 +24,7 @@ const RestaurantPage = () => {
         }
     }, [scrolled, isFetchingNextPage, fetchNextPage]);
 
-    useEffect(() => {
-        fetchNextPage();
-        if (data) document.title = currentRestaurant.name;
-    }, [currentRestaurant.name, data, fetchNextPage]);
+    useDocumentTitle(currentRestaurant?.name);
 
     return (
         <>
@@ -54,11 +34,14 @@ const RestaurantPage = () => {
                     {showModal && <ItemModal restaurantId={id} />}
                     {data && (
                         <RestaurantContainer
-                            itemData={data as object as ItemData[]}
+                            pageData={data}
                             name={currentRestaurant.name}
                             openTime={currentRestaurant.activeTimePeriod.open}
                             closeTime={currentRestaurant.activeTimePeriod.close}
                             restaurantImage={currentRestaurant.coverImage}
+                            onLayoutScroll={(event: SyntheticEvent) => {
+                                handleScroll(event, setScrolled);
+                            }}
                         />
                     )}
                 </>

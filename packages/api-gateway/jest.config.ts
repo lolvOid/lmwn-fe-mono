@@ -10,4 +10,9 @@ export default {
   },
   testRegex: '(/__test__/.*|(\\.|/)(test|spec))\\.ts?$',
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
+  globals: {
+    'ts-jest': {
+      tsconfig: './tsconfig.json',
+    },
+  },
 };

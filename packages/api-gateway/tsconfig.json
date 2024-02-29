@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "es5",
+		"module": "commonjs",
     "outDir": "dist",
     "rootDir": "./src",
     /* Strict Type-Checking Options */
@@ -10,20 +10,20 @@
     "noImplicitAny": true,
     /* Module Resolution Options */
     "moduleResolution": "node",
-    "baseUrl": ".",
     "esModuleInterop": true,
     /* Advanced Options */
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["node", "jest"],
+    "types": ["node", "jest"]
   },
   "ts-node": {
     "transpileOnly": true,
     "files": true
   },
   "include": ["src/**/*", "src/types", "__test__"],
-  "exclude": ["node_modules,/coverage", "dist", "__test__", "jest.config.cjs"]
+  "exclude": ["node_modules", "coverage", "dist", "__test__"]
 }

@@ -1,10 +1,10 @@
 import request from 'supertest';
 import app from '../../src/app';
-import { Restaurant } from '../../../web/src/types/restaurant';
-import { FullMenu, Menu } from '../../../web/src/types/menu';
+import { Restaurant } from '../../src/types/restaurant';
+import { FullMenu, Menu } from '../../src/types/menu';
 
 const restaurantId = 227018;
-const invalidRestaurantId = 999999; // Use an invalid ID for testing 404
+const invalidRestaurantId = 999999;
 const menuName = 'Peach and Blueberry Crumble Cheesecake';
 
 describe('Test Restaurants and Menu routes', () => {

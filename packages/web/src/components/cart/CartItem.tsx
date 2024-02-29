@@ -1,6 +1,6 @@
 import { getThaiBaht } from '@/utilts/formatCurrency';
 import { GrTrash } from 'react-icons/gr';
-import { CartDataType } from '../../types/cartTypes';
+import { CartDataType } from '@/store/types/cartTypes';
 
 interface CartItemProps {
     itemData: CartDataType;

@@ -4,9 +4,13 @@
 
 case "$OS" in
     Windows_NT)
-        cd packages/web && yarn.cmd run pre-commit && yarn.cmd test
+        (cd packages/web && yarn.cmd run pre-commit) &
+        (cd packages/api-gateway && yarn.cmd run pre-commit) &
+        wait
     ;;
     *)
-        cd packages/web && yarn run pre-commit && yarn test
+        (cd packages/web && yarn run pre-commit) &
+        (cd packages/api-gateway && yarn run pre-commit) &
+        wait
     ;;
 esac

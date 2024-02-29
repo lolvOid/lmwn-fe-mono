@@ -7,7 +7,7 @@ describe('ItemCard', () => {
         name: 'Cake',
         imageSource: 'sample-image.jpg',
         fullPrice: 100,
-        discountedPercent: '10',
+        discountedPercent: 10,
         totalInStock: 5,
         onClick: jest.fn(),
     };
