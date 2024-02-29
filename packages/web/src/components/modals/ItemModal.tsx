@@ -152,7 +152,7 @@ const ItemModal = ({ restaurantId }: ItemModalProps) => {
                                                                 return (
                                                                     <div
                                                                         key={index}
-                                                                        className="inline-flex gap-2 items-center choices-checkbox"
+                                                                        className={`inline-flex gap-2 items-center ${styles.choicesCheckbox}`}
                                                                     >
                                                                         <input
                                                                             type="checkbox"
