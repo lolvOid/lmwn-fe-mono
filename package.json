@@ -11,7 +11,9 @@
     "prepare": "husky",
     "test:api": "cd packages/api-gateway && yarn test",
     "test:web": "cd packages/web && yarn test",
-    "test": "yarn test:api && yarn test:web"
+    "test:api-coverage": "cd packages/api-gateway && yarn test:coverage",
+    "test:web-coverage": "cd packages/web && yarn test:coverage",
+    "test:coverage": "yarn test:api-coverage && yarn test:web-coverage"
   },
   "devDependencies": {
     "husky": "^9.0.11",

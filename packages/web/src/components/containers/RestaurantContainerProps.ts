@@ -7,5 +7,6 @@ export type RestaurantContainerProps = {
     openTime: string;
     closeTime: string;
     restaurantImage: string;
+    isLoading?: boolean;
     onLayoutScroll: (event: SyntheticEvent) => void;
 };

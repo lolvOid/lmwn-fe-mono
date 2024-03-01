@@ -1,5 +1,5 @@
-import { getThaiBaht } from '@/utilts/formatCurrency';
-import { getDiscountedPrice } from '@/utilts/helper';
+import { getThaiBaht } from '@/utils/formatCurrency';
+import { getDiscountedPrice } from '@/utils/helper';
 import { SyntheticEvent } from 'react';
 import { FaPlus } from 'react-icons/fa';
 interface ItemCardProps {

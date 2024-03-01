@@ -1,4 +1,4 @@
-import { getThaiBaht } from '@/utilts/formatCurrency';
+import { getThaiBaht } from '@/utils/formatCurrency';
 import { GrTrash } from 'react-icons/gr';
 import { CartDataType } from '@/store/types/cartTypes';
 

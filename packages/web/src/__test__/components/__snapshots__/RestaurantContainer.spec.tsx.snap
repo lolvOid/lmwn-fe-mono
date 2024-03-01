@@ -15,7 +15,7 @@ exports[`RestaurantContainer Should render properly with provided props 1`] = `
       >
         <img
           alt="Restaurant Name"
-          className="object-cover w-full h-[180px] lg:h-[600px]"
+          className="containerImage"
           src="restaurant-image.jpg"
         />
       </div>

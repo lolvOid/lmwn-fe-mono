@@ -6,7 +6,9 @@ import useModalStore from '@/store/modal/modalStore';
 import CustomNavbar from '@/components/navbar/CustomNavbar';
 import ItemModal from '@/components/modals/ItemModal';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-import { handleScroll } from '@/utilts/helper';
+import { handleScroll } from '@/utils/helper';
+import { PageData } from '../types/PageData';
+import Loading from '@/components/loading/Loading';
 
 const RestaurantPage = () => {
     const params = useParams();
@@ -25,20 +27,21 @@ const RestaurantPage = () => {
     }, [scrolled, isFetchingNextPage, fetchNextPage]);
 
     useDocumentTitle(currentRestaurant?.name);
-
+    if (isLoading) return <Loading />
     return (
         <>
-            <CustomNavbar />
+            <CustomNavbar title={currentRestaurant?.name} />
             {!isLoading && !error && (
                 <>
                     {showModal && <ItemModal restaurantId={id} />}
                     {data && (
                         <RestaurantContainer
-                            pageData={data}
+                            pageData={data as PageData}
                             name={currentRestaurant.name}
                             openTime={currentRestaurant.activeTimePeriod.open}
                             closeTime={currentRestaurant.activeTimePeriod.close}
                             restaurantImage={currentRestaurant.coverImage}
+                            isLoading={isLoading || isFetchingNextPage}
                             onLayoutScroll={(event: SyntheticEvent) => {
                                 handleScroll(event, setScrolled);
                             }}

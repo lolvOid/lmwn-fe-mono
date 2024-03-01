@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDiscountedPrice Should calculate discounted price when both price and discount are positive numbers 1`] = `80`;
+
+exports[`getDiscountedPrice Should handle invalid input and return NaN 1`] = `NaN`;
+
+exports[`getDiscountedPrice Should handle negative price and calculate discounted price 1`] = `-72`;
+
+exports[`getDiscountedPrice Should handle string input for price and discount and calculate discounted price 1`] = `112.5`;
+
+exports[`getDiscountedPrice Should handle zero discount and return the full price 1`] = `50`;
+
+exports[`getDiscountedPrice Should handle zero price and calculate discounted price 1`] = `0`;

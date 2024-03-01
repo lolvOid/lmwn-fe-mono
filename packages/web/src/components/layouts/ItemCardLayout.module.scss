@@ -1,9 +1,9 @@
 .itemCardLayout {
-    height: calc(100vh - 700px);
+  height: calc(100vh - 700px);
 }
 
-@media (max-width: 320px) {
-    .itemCardLayout {
-        height: calc(100vh - 200px);
-    }
+@media (min-width: 375px) {
+  .itemCardLayout {
+    height: calc(100vh - 300px);
+  }
 }
