@@ -13,7 +13,8 @@
     "test:web": "cd packages/web && yarn test",
     "test:api-coverage": "cd packages/api-gateway && yarn test:coverage",
     "test:web-coverage": "cd packages/web && yarn test:coverage",
-    "test:coverage": "yarn test:api-coverage && yarn test:web-coverage"
+    "test:coverage": "yarn test:api-coverage && yarn test:web-coverage",
+    "build": "lerna run build"
   },
   "devDependencies": {
     "husky": "^9.0.11",
