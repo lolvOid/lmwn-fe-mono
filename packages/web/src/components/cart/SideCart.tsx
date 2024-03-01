@@ -1,6 +1,6 @@
 import useCartStore from '@/store/cart/cartStore';
 import CartItem from '@/components/cart/CartItem';
-import { getThaiBaht } from '@/utilts/formatCurrency';
+import { getThaiBaht } from '@/utils/formatCurrency';
 const SideCart = () => {
     const {
         cartData,

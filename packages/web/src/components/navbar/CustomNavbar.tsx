@@ -1,8 +1,11 @@
 import { GrCart } from 'react-icons/gr';
 import useCartStore from '@/store/cart/cartStore';
 import SideCart from '@/components/cart/SideCart';
+interface CustomNavbarProps {
+    title?: string;
+}
 
-const CustomNavbar = () => {
+const CustomNavbar = ({ title }: CustomNavbarProps) => {
     const { totalCartCount, isCartDisplayed, showCart, hideCart } = useCartStore();
     const handleShowCart = () => {
         if (!isCartDisplayed) {
@@ -15,7 +18,7 @@ const CustomNavbar = () => {
         <>
             <div className="h-16 primary-bg w-full fixed top-0 left-0 z-[200] inline-flex p-2 items-center justify-between">
                 <div className="text-white text-md lg:text-xl font-bold uppercase">
-                    Line Man Wongnai Assignment
+                    {title ||  'Line Man Wongnai Assignment' }
                 </div>
                 <div className="inline-flex text-wrap text-white">
                     <ul className="list-none">

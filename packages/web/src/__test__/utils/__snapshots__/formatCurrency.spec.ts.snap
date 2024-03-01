@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getThaiBaht Should be invalid input 1`] = `"฿NaN"`;
+
+exports[`getThaiBaht Should be string input for value 1`] = `"฿5,000"`;
+
+exports[`getThaiBaht Should be undefined digit 1`] = `"฿9,877"`;
+
+exports[`getThaiBaht Should format the value to Thai Baht currency with specified digits 1`] = `"฿12,345.68"`;
+
+exports[`getThaiBaht Should format the value to Thai Baht currency without digits 1`] = `"฿1,000"`;

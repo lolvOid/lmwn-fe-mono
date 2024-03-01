@@ -4,8 +4,10 @@ import ItemCard from '@/components/card/ItemCard';
 import { Fragment } from 'react';
 import { Menu } from '@/interfaces/menu';
 import useModalStore from '@/store/modal/modalStore';
-import { getKey } from '@/utilts/generateId';
+import { getKey } from '@/utils/generateId';
 import { RestaurantContainerProps } from './RestaurantContainerProps';
+import styles from '@/components/containers/RestaurantContainer.module.scss';
+import DotsLoading from '../loading/DotsLoading';
 
 const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
     pageData,
@@ -13,6 +15,7 @@ const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
     openTime,
     closeTime,
     restaurantImage,
+    isLoading,
     onLayoutScroll,
 }: RestaurantContainerProps) => {
     const { showModal, setModalData } = useModalStore();
@@ -31,7 +34,7 @@ const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
                         <img
                             src={restaurantImage}
                             alt={name}
-                            className="object-cover w-full h-[180px] lg:h-[600px]"
+                            className={styles.containerImage}
                         />
                     </div>
                 </div>
@@ -59,6 +62,7 @@ const RestaurantContainer: React.FC<RestaurantContainerProps> = ({
                             );
                         })}
                 </ItemCardLayout>
+                {isLoading && <DotsLoading />}
             </div>
         </main>
     );
