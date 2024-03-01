@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import { API_BASE_URL } from '@/common/constants';
 import { Request, Response } from 'express';
-import { MenuCache, RestaurantCache } from '@/services/CacheService';
+import { MenuCache, RestaurantCache } from '../services/CacheService';
 
 const api: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,

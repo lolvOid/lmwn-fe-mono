@@ -1,5 +1,5 @@
-import app from "@/app";
-import { PORT } from '@/common/constants';
+import app from './app';
+import { PORT } from './common/constants';
 
 try {
   app.listen(PORT, (): void => {
